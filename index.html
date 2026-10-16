@@ -170,6 +170,7 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
       <a href="#results">Results</a>
       <a href="#old-vs-new">Old vs new</a>
       <a href="#geometry">Advanced cases</a>
+      <a href="#contribute">Contribute</a>
       <a href="https://github.com/NLR-Theseus/cfdllmbench">GitHub</a>
     </nav>
   </header>
@@ -333,13 +334,15 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
 
     <section id="data" class="col">
       <div class="head">
-        <p class="eyebrow">Data and code</p>
-        <h2>Reproduce it</h2>
+        <p class="eyebrow">Data, code and contributions</p>
+        <h2>Reproduce it, extend it</h2>
       </div>
       <div class="prose">
         <p>The V2 datasets, reference solutions and evaluation code are in the <a href="https://github.com/NLR-Theseus/cfdllmbench">GitHub repository</a>: <a href="https://github.com/NLR-Theseus/cfdllmbench/blob/main/CFDQuery/CFDQuery.json">CFDQuery</a>, <a href="https://github.com/NLR-Theseus/cfdllmbench/tree/main/CFDCodeBench/PDE_Benchmark">CFDCodeBench</a> and <a href="https://github.com/NLR-Theseus/cfdllmbench/tree/main/FoamBench/Dataset">FoamBench</a>. The FoamBench agent is <a href="https://github.com/csml-rpi/Foam-Agent">Foam-Agent</a>.</p>
         <p class="muted">Temperature 0 wherever the provider allows it. GPT-5.6 Sol and both Gemini models ran at low reasoning effort, and GLM 5.2 and Qwen3.8-27B with thinking off. Codex CLI used GPT-5.6 Sol and Claude Code used Opus 5.5, both at low effort. All simulations use OpenFOAM 10.</p>
       </div>
+      <h3 id="contribute" style="margin-top:26px">Contribute</h3>
+      <p style="margin-top:8px">If you wish to contribute to CFDLLMBench, please raise a <a href="https://github.com/NLR-Theseus/cfdllmbench/pulls">pull request</a> with your prompts and reference files, and we will review it.</p>
       <h3 style="margin-top:26px">Cite</h3>
       <pre class="cite">@article{somasekharan2025cfdllmbench,
   title={{CFDLLMBench}: A Benchmark Suite for Evaluating Large Language Models in Computational Fluid Dynamics},
