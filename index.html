@@ -93,15 +93,6 @@ section { padding-block: 60px 0; }
 .new li { display: grid; grid-template-columns: 7rem 1fr; gap: 14px; font-size: 0.97rem; }
 .new li > span:first-child { font: 500 0.76rem/1.95 var(--f-mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
 
-/* KPI tiles */
-.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 12px; margin-bottom: 18px; }
-.kpi { background: var(--plate); border: 1px solid var(--rule); border-radius: 10px; padding: 14px 16px; display: grid; gap: 4px; }
-.kpi .label { font-size: 0.86rem; color: var(--ink-2); }
-.kpi .vals { display: flex; align-items: baseline; gap: 10px; }
-.kpi .now { font: 720 2.4rem/1 var(--f-display); font-stretch: 110%; }
-.kpi .then { font: 500 0.95rem var(--f-mono); color: var(--muted); }
-.kpi .who { font-size: 0.8rem; color: var(--muted); }
-
 /* figure plates */
 .fig { background: var(--plate); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 20px 16px; display: grid; gap: 14px; box-shadow: var(--shadow); min-width: 0; margin: 0; }
 .fig-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px; }
@@ -179,7 +170,7 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
     <div class="wide hero">
       <p class="eyebrow">Benchmark update · October 2026</p>
       <h1>CFDLLMBench <em>V2</em></h1>
-      <p class="lede">CFDLLMBench measures how well large language models handle computational fluid dynamics, from graduate-level numerics to setting up and running real OpenFOAM simulations. V2 runs the benchmark on six current models with revised prompts and corrected references, and compares them with the models of the original study.</p>
+      <p class="lede">CFDLLMBench measures how well large language models handle computational fluid dynamics, from graduate-level numerics to setting up and running real OpenFOAM simulations.</p>
       <div class="buttons">
         <a class="btn primary" href="https://openreview.net/forum?id=kTcH1MnkjY"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M9.5 1.5V5H13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Paper</a>
         <a class="btn" href="https://github.com/NLR-Theseus/cfdllmbench"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Code</a>
@@ -194,7 +185,7 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
     <section id="benchmark" class="col">
       <div class="head">
         <p class="eyebrow">The benchmark</p>
-        <h2>What CFDLLMBench V2 measures</h2>
+        <h2>What CFDLLMBench measures</h2>
       </div>
       <div class="prose">
         <p>A CFD engineer needs three things: knowing the numerics, turning a problem statement into a working solver, and setting up a simulation that reproduces the right flow. CFDLLMBench tests each one separately. The scoring is strict: an answer is right or wrong, and code or a simulation only counts if it runs and matches a reference solution.</p>
@@ -212,7 +203,7 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
           <p class="eyebrow">CFDCodeBench</p>
           <p class="n">24<small>PDE problems</small></p>
           <p>From 1D Burgers to Rayleigh–Bénard convection. The model writes a Python solver in one attempt.</p>
-          <p class="rule">Success: the code runs, NMSE &lt; 0.1 against the reference, and it stays accurate at finer resolution.</p>
+          <p class="rule">Success: the code runs, NMSE &lt; 0.1 against the reference, and convergence as grid is refined.</p>
         </article>
         <article class="task">
           <p class="eyebrow">FoamBench</p>
@@ -225,8 +216,6 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
     <div class="col">
       <ul class="new" aria-label="What is new in V2">
         <li><span>Models</span><span>GPT-5.6 Sol, Gemini 3.1 Pro, Gemini 3.8 Flash, GLM 5.2, Qwen3.8-27B and Llama 4 Maverick 17B Instruct, compared with the original study's Sonnet 3.5, o3-mini, Gemini 2.5 Flash, Haiku 3.5, GPT-4o and Gemma-2-9B.</span></li>
-        <li><span>Prompts</span><span>FoamBench prompts now state the values their reference case uses: mesh sizes, boundary values, turbulence inputs, gas properties and time stepping. CFDCodeBench has 24 tasks with explicit output grids.</span></li>
-        <li><span>References</span><span>Nine shallow-water references were rebuilt to match their prompts. Rayleigh–Bénard runs are scored against the reference recomputed on each run's own copy of the prompt's mesh, because this convective instability amplifies round-off in the mesh coordinates.</span></li>
         <li><span>Agents</span><span>FoamBench runs on two versions of <a href="https://github.com/csml-rpi/Foam-Agent">Foam-Agent</a>: Foam-Agent 1.0, the version used in the original study, and the current Foam-Agent 2.0. Codex CLI and Claude Code also ran the benchmark directly, without Foam-Agent.</span></li>
       </ul>
     </div>
@@ -236,7 +225,6 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
         <p class="eyebrow">Results</p>
         <h2>Success rate on every task</h2>
       </div>
-      <div class="kpis" id="kpis" aria-label="Best success rate per task: CFDLLMBench V2 against the original study"></div>
       <figure class="fig" aria-labelledby="lb-title">
         <div class="fig-head">
           <div class="fig-title">
@@ -446,34 +434,6 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
     basic: { label: "FoamBench Basic", foam: "basic", paper: function (m) { return m.foam.basic; }, sub: "FoamBench Basic: 110 cases." },
     advanced: { label: "FoamBench Advanced", foam: "advanced", paper: function (m) { return m.foam.advanced; }, sub: "FoamBench Advanced: 16 cases." }
   };
-
-  /* ---------- KPI tiles: best 2026 vs best 2025 ---------- */
-  (function () {
-    var c = document.getElementById("kpis");
-    function best(list, get, tag) {
-      var b = null;
-      list.forEach(function (m) {
-        var v = get(m); if (v == null) return;
-        if (!b || v > b.v + 1e-9) b = { v: v, n: [short(m.name) + (tag ? tag(m) : "")] };
-        else if (Math.abs(v - b.v) <= 1e-9) b.n.push(short(m.name) + (tag ? tag(m) : ""));
-      });
-      return b;
-    }
-    Object.keys(TASKS).forEach(function (k) {
-      var t = TASKS[k], now, then = best(D.paper_models, t.paper);
-      if (t.foam) {
-        var nw = best(D.v2_models, function (m) { return foam(m, "new", t.foam); }, function () { return ", Foam-Agent 2.0"; });
-        var od = best(D.v2_models, function (m) { return foam(m, "old", t.foam); }, function () { return ", Foam-Agent 1.0"; });
-        now = nw.v >= od.v ? nw : od;
-      } else now = best(D.v2_models, t.v2);
-      var tile = h("div", { "class": "kpi" }, c);
-      h("span", { "class": "label" }, tile, t.label + ", best model");
-      var vals = h("div", { "class": "vals" }, tile);
-      h("span", { "class": "now" }, vals, pct(now.v));
-      h("span", { "class": "then" }, vals, "2025: " + pct(then.v));
-      h("span", { "class": "who" }, tile, now.n.join(" · "));
-    });
-  })();
 
   /* ---------- leaderboard ---------- */
   (function () {
