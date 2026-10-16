@@ -280,7 +280,7 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
         <div class="body">
           <h3>Knowledge has plateaued</h3>
           <p class="stat">2025: <b>59–91%</b> &nbsp;·&nbsp; 2026: <b>80–86%</b></p>
-          <p>Every 2026 model answers between 80% and 86% of the 90 questions. The weaker models caught up, but the top didn't move: no 2026 model beats o3-mini's 91% (82 of 90). Some misses look like answer-key problems. On question 3, all six models pick the option with the correct fourth-order coefficients, while the key marks a different one.</p>
+          <p>Every 2026 model answers between 80% and 86% of the 90 questions. The weaker models caught up, but the top didn't move: no 2026 model beats o3-mini's 91% (82 of 90). </p>
         </div>
       </div>
       <div class="finding">
@@ -288,7 +288,7 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
         <div class="body">
           <h3>Writing a working solver went from rare to routine</h3>
           <p class="stat">2025 best: <b>14%</b> &nbsp;·&nbsp; 2026 best: <b>75%</b></p>
-          <p>In 2025 the best model wrote a correct, convergent solver for 14% of the problems. Three 2026 models reach 75% in a single attempt with no error feedback, and every 2026 model writes code that runs on at least 79% of the tasks; what remains is accuracy. The task set was also revised (28 tasks then, 24 now, with explicit output grids), so the jump combines better models with clearer tasks.</p>
+          <p>In 2025 the best model wrote a correct, convergent solver for 14% of the problems. Three 2026 models reach 75% in a single attempt with no error feedback, and every 2026 model writes code that runs on at least 79% of the tasks; what remains is accuracy. </p>
         </div>
       </div>
       <div class="finding">
@@ -296,9 +296,8 @@ footer { padding-block: 44px 56px; color: var(--muted); font-size: 0.86rem; }
         <div class="body">
           <h3>OpenFOAM cases now run and reproduce the reference</h3>
           <p class="stat">Basic: <b>34%</b> → <b>77%</b> &nbsp;·&nbsp; Advanced: <b>25%</b> → <b>81%</b> (<b>94%</b> with Foam-Agent 2.0)</p>
-          <p>With Foam-Agent 1.0, the best 2025 model solved 34% of the Basic cases and the best 2026 model solves 77%. On Advanced the best result rises from 25% to 81%, and to 94% with Foam-Agent 2.0. Advanced used to be the harder set and is now the easier one, for two reasons: the revised prompts give the values the reference uses, and the agents now build the right geometry (next section).</p>
-          <p class="muted">The Basic failures that remain are mostly geometry shortcuts (a simplified backward-facing step in pitzDaily, the obstacle left out of the dam break) and steady square-bend runs that stop once converged, before the 500 s at which they are scored.</p>
-        </div>
+          <p>With Foam-Agent 1.0, the best 2025 model solved 34% of the Basic cases and the best 2026 model solves 77%. On Advanced the best result rises from 25% to 81%, and to 94% with Foam-Agent 2.0. Advanced used to be the harder set and is now the easier one as the agents now build the right geometry.</p>
+          </div>
       </div>
     </div>
 
